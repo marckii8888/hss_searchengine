@@ -46,7 +46,7 @@ class App extends React.Component {
 
           this.text_to_show.push(
             <tr key={key}>
-              <td>{this.text_to_show.length}</td>
+              <td>{this.text_to_show.length+1}</td>
               <td>{text.slice(0, text.indexOf(":"))}</td>
               <td>
                 <span
@@ -79,7 +79,7 @@ class App extends React.Component {
           var starting_index = text.indexOf(":") + 2;
           this.text_to_show.push(
             <tr key={key}>
-              <td>{this.text_to_show.length}</td>
+              <td>{this.text_to_show.length+1}</td>
               <td>{text.slice(0, text.indexOf(":"))}</td>
               <td>
                 <span
@@ -122,7 +122,7 @@ class App extends React.Component {
           if (x_index < y_index) {
             this.text_to_show.push(
               <tr key={key}>
-                <td>{this.text_to_show.length}</td>
+                <td>{this.text_to_show.length +1}</td>
                 <td>{text.slice(0, text.indexOf(":"))}</td>
                 <td>
                   <span
@@ -160,7 +160,7 @@ class App extends React.Component {
           ) {
             this.text_to_show.push(
               <tr key={key}>
-                <td>{this.text_to_show.length}</td>
+                <td>{this.text_to_show.length + 1}</td>
                 <td>{text.slice(0, text.indexOf(":"))}</td>
                 <td>
                   <span
@@ -208,7 +208,7 @@ class App extends React.Component {
           ) {
             this.text_to_show.push(
               <tr key={key}>
-                <td>{this.text_to_show.length}</td>
+                <td>{this.text_to_show.length + 1}</td>
                 <td>{text.slice(0, text.indexOf(":"))}</td>
                 <td>
                   <span
@@ -243,7 +243,7 @@ class App extends React.Component {
           if (y_index - x_index === 2) {
             this.text_to_show.push(
               <tr key={key}>
-                <td>{this.text_to_show.length}</td>
+                <td>{this.text_to_show.length + 1}</td>
                 <td>{text.slice(0, text.indexOf(":"))}</td>
                 <td>
                   <span
@@ -292,7 +292,7 @@ class App extends React.Component {
           ) {
             this.text_to_show.push(
               <tr key={key}>
-                <td>{this.text_to_show.length}</td>
+                <td>{this.text_to_show.length + 1}</td>
                 <td>{text.slice(0, text.indexOf(":"))}</td>
                 <td>
                   <span
@@ -327,7 +327,7 @@ class App extends React.Component {
           if (y_index - x_index === 3) {
             this.text_to_show.push(
               <tr key={key}>
-                <td>{this.text_to_show.length}</td>
+                <td>{this.text_to_show.length + 1}</td>
                 <td>{text.slice(0, text.indexOf(":"))}</td>
                 <td>
                   <span
@@ -376,7 +376,7 @@ class App extends React.Component {
           ) {
             this.text_to_show.push(
               <tr key={key}>
-                <td>{this.text_to_show.length}</td>
+                <td>{this.text_to_show.length + 1}</td>
                 <td>{text.slice(0, text.indexOf(":"))}</td>
                 <td>
                   <span
@@ -411,7 +411,7 @@ class App extends React.Component {
           if (y_index - x_index === 4) {
             this.text_to_show.push(
               <tr key={key}>
-                <td>{this.text_to_show.length}</td>
+                <td>{this.text_to_show.length + 1}</td>
                 <td>{text.slice(0, text.indexOf(":"))}</td>
                 <td>
                   <span
@@ -449,7 +449,7 @@ class App extends React.Component {
         if (text.substring(starting_index).startsWith(starting_words)) {
           this.text_to_show.push(
             <tr key={key}>
-              <td>{this.text_to_show.length}</td>
+              <td>{this.text_to_show.length + 1}</td>
               <td>{text.slice(0, text.indexOf(":"))}</td>
               <td>
                 <span
@@ -485,7 +485,7 @@ class App extends React.Component {
         ) {
           this.text_to_show.push(
             <tr key={key}>
-              <td>{this.text_to_show.length}</td>
+              <td>{this.text_to_show.length + 1}</td>
               <td>{text.slice(0, text.indexOf(":"))}</td>
               <td>
                 <span
@@ -524,7 +524,7 @@ class App extends React.Component {
           if (new_text.endsWith(ending_words)) {
             this.text_to_show.push(
               <tr key={key}>
-                <td>{this.text_to_show.length}</td>
+                <td>{this.text_to_show.length + 1}</td>
                 <td>{text.slice(0, text.indexOf(":"))}</td>
                 <td>
                   <span
@@ -548,7 +548,7 @@ class App extends React.Component {
         } else if (text.endsWith(ending_words)) {
           this.text_to_show.push(
             <tr key={key}>
-              <td>{this.text_to_show.length}</td>
+              <td>{this.text_to_show.length + 1}</td>
               <td>{text.slice(0, text.indexOf(":"))}</td>
               <td>
                 <span
@@ -581,7 +581,7 @@ class App extends React.Component {
             console.log("Here!");
             this.text_to_show.push(
               <tr key={key}>
-                <td>{this.text_to_show.length}</td>
+                <td>{this.text_to_show.length+1}</td>
                 <td>{text.slice(0, text.indexOf(":"))}</td>
                 <td>
                   <span
@@ -618,7 +618,7 @@ class App extends React.Component {
         if (text.includes(pair)) {
           this.text_to_show.push(
             <tr key={key}>
-              <td>{this.text_to_show.length}</td>
+              <td>{this.text_to_show.length + 1}</td>
               <td>{text.slice(0, text.indexOf(":"))}</td>
               <td>
                 <span
@@ -650,7 +650,7 @@ class App extends React.Component {
         ) {
           this.text_to_show.push(
             <tr key={key}>
-              <td>{this.text_to_show.length}</td>
+              <td>{this.text_to_show.length+1}</td>
               <td>{text.slice(0, text.indexOf(":"))}</td>
               <td>
                 <span
