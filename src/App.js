@@ -13,16 +13,6 @@ function read_text_file(file) {
     if (rawFile.readyState === 4) {
       if (rawFile.status === 200 || rawFile.status === 0) {
         allText = rawFile.responseText;
-        // console.log(allText);
-
-        // allText.split("\n").map((item, key) => {
-        //   // return (
-        //   //   <span key={key}>
-        //   //     {item}
-        //   //     <br />
-        //   //   </span>
-        //   // );
-        // });
       }
     }
   };
@@ -52,15 +42,25 @@ class App extends React.Component {
         var index = text.indexOf(word);
 
         if (index !== -1) {
-          text = text.replace(
-            word,
-            `<span style={{ color: red }}>${word}</span>`
-          );
+          var starting_index = text.indexOf(":") + 2;
+
           this.text_to_show.push(
-            <span key={key}>
-              {text}
-              <br />
-            </span>
+            <tr key={key}>
+              <td>{this.text_to_show.length}</td>
+              <td>{text.slice(0, text.indexOf(":"))}</td>
+              <td>
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: text
+                      .slice(starting_index, text.length)
+                      .replace(
+                        word,
+                        `<strong style="color : red">${word}</strong>`
+                      ),
+                  }}
+                />
+              </td>
+            </tr>
           );
           this.setState({
             show_text: this.text_to_show,
@@ -76,11 +76,24 @@ class App extends React.Component {
           index !== -1 &&
           punctuation_list.includes(text[index + word.length])
         ) {
+          var starting_index = text.indexOf(":") + 2;
           this.text_to_show.push(
-            <span key={key}>
-              {text}
-              <br />
-            </span>
+            <tr key={key}>
+              <td>{this.text_to_show.length}</td>
+              <td>{text.slice(0, text.indexOf(":"))}</td>
+              <td>
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: text
+                      .slice(starting_index, text.length)
+                      .replace(
+                        word,
+                        `<strong style="color : red">${word}</strong>`
+                      ),
+                  }}
+                />
+              </td>
+            </tr>
           );
           this.setState({
             show_text: this.text_to_show,
@@ -103,13 +116,28 @@ class App extends React.Component {
         var x_index = text.indexOf(X);
         var y_index = text.indexOf(Y);
 
+        var starting_index = text.indexOf(":") + 2;
+
         if (x_index !== -1 && y_index !== -1) {
           if (x_index < y_index) {
             this.text_to_show.push(
-              <span key={key}>
-                {text}
-                <br />
-              </span>
+              <tr key={key}>
+                <td>{this.text_to_show.length}</td>
+                <td>{text.slice(0, text.indexOf(":"))}</td>
+                <td>
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: text
+                        .slice(starting_index, text.length)
+                        .replace(X, `<strong style="color : red">${X}</strong>`)
+                        .replace(
+                          Y,
+                          `<strong style="color : red">${Y}</strong>`
+                        ),
+                    }}
+                  />
+                </td>
+              </tr>
             );
 
             this.setState({
@@ -123,16 +151,31 @@ class App extends React.Component {
         var x_index = text.indexOf(X);
         var y_index = text.indexOf(Y);
 
+        var starting_index = text.indexOf(":") + 2;
+
         if (x_index !== -1 && y_index !== -1) {
           if (
             x_index < y_index &&
             punctuation_list.includes(text[y_index + 1])
           ) {
             this.text_to_show.push(
-              <span key={key}>
-                {text}
-                <br />
-              </span>
+              <tr key={key}>
+                <td>{this.text_to_show.length}</td>
+                <td>{text.slice(0, text.indexOf(":"))}</td>
+                <td>
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: text
+                        .slice(starting_index, text.length)
+                        .replace(X, `<strong style="color : red">${X}</strong>`)
+                        .replace(
+                          Y,
+                          `<strong style="color : red">${Y}</strong>`
+                        ),
+                    }}
+                  />
+                </td>
+              </tr>
             );
             this.setState({
               show_text: this.text_to_show,
@@ -156,16 +199,31 @@ class App extends React.Component {
         var x_index = text.indexOf(X);
         var y_index = text.indexOf(Y);
 
+        var starting_index = text.indexOf(":") + 2;
+
         if (x_index !== -1 && y_index !== -1) {
           if (
             y_index - x_index === 2 &&
             punctuation_list.includes(text[y_index + 1])
           ) {
             this.text_to_show.push(
-              <span key={key}>
-                {text}
-                <br />
-              </span>
+              <tr key={key}>
+                <td>{this.text_to_show.length}</td>
+                <td>{text.slice(0, text.indexOf(":"))}</td>
+                <td>
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: text
+                        .slice(starting_index, text.length)
+                        .replace(X, `<strong style="color : red">${X}</strong>`)
+                        .replace(
+                          Y,
+                          `<strong style="color : red">${Y}</strong>`
+                        ),
+                    }}
+                  />
+                </td>
+              </tr>
             );
 
             this.setState({
@@ -179,13 +237,28 @@ class App extends React.Component {
         var x_index = text.indexOf(X);
         var y_index = text.indexOf(Y);
 
+        var starting_index = text.indexOf(":") + 2;
+
         if (x_index !== -1 && y_index !== -1) {
           if (y_index - x_index === 2) {
             this.text_to_show.push(
-              <span key={key}>
-                {text}
-                <br />
-              </span>
+              <tr key={key}>
+                <td>{this.text_to_show.length}</td>
+                <td>{text.slice(0, text.indexOf(":"))}</td>
+                <td>
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: text
+                        .slice(starting_index, text.length)
+                        .replace(X, `<strong style="color : red">${X}</strong>`)
+                        .replace(
+                          Y,
+                          `<strong style="color : red">${Y}</strong>`
+                        ),
+                    }}
+                  />
+                </td>
+              </tr>
             );
 
             this.setState({
@@ -210,16 +283,31 @@ class App extends React.Component {
         var x_index = text.indexOf(X);
         var y_index = text.indexOf(Y);
 
+        var starting_index = text.indexOf(":") + 2;
+
         if (x_index !== -1 && y_index !== -1) {
           if (
             y_index - x_index === 3 &&
             punctuation_list.includes(text[y_index + 1])
           ) {
             this.text_to_show.push(
-              <span key={key}>
-                {text}
-                <br />
-              </span>
+              <tr key={key}>
+                <td>{this.text_to_show.length}</td>
+                <td>{text.slice(0, text.indexOf(":"))}</td>
+                <td>
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: text
+                        .slice(starting_index, text.length)
+                        .replace(X, `<strong style="color : red">${X}</strong>`)
+                        .replace(
+                          Y,
+                          `<strong style="color : red">${Y}</strong>`
+                        ),
+                    }}
+                  />
+                </td>
+              </tr>
             );
 
             this.setState({
@@ -233,13 +321,28 @@ class App extends React.Component {
         var x_index = text.indexOf(X);
         var y_index = text.indexOf(Y);
 
+        var starting_index = text.indexOf(":") + 2;
+
         if (x_index !== -1 && y_index !== -1) {
           if (y_index - x_index === 3) {
             this.text_to_show.push(
-              <span key={key}>
-                {text}
-                <br />
-              </span>
+              <tr key={key}>
+                <td>{this.text_to_show.length}</td>
+                <td>{text.slice(0, text.indexOf(":"))}</td>
+                <td>
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: text
+                        .slice(starting_index, text.length)
+                        .replace(X, `<strong style="color : red">${X}</strong>`)
+                        .replace(
+                          Y,
+                          `<strong style="color : red">${Y}</strong>`
+                        ),
+                    }}
+                  />
+                </td>
+              </tr>
             );
 
             this.setState({
@@ -264,16 +367,31 @@ class App extends React.Component {
         var x_index = text.indexOf(X);
         var y_index = text.indexOf(Y);
 
+        var starting_index = text.indexOf(":") + 2;
+
         if (x_index !== -1 && y_index !== -1) {
           if (
             y_index - x_index === 4 &&
             punctuation_list.includes(text[y_index + 1])
           ) {
             this.text_to_show.push(
-              <span key={key}>
-                {text}
-                <br />
-              </span>
+              <tr key={key}>
+                <td>{this.text_to_show.length}</td>
+                <td>{text.slice(0, text.indexOf(":"))}</td>
+                <td>
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: text
+                        .slice(starting_index, text.length)
+                        .replace(X, `<strong style="color : red">${X}</strong>`)
+                        .replace(
+                          Y,
+                          `<strong style="color : red">${Y}</strong>`
+                        ),
+                    }}
+                  />
+                </td>
+              </tr>
             );
 
             this.setState({
@@ -287,13 +405,28 @@ class App extends React.Component {
         var x_index = text.indexOf(X);
         var y_index = text.indexOf(Y);
 
+        var starting_index = text.indexOf(":") + 2;
+
         if (x_index !== -1 && y_index !== -1) {
           if (y_index - x_index === 4) {
             this.text_to_show.push(
-              <span key={key}>
-                {text}
-                <br />
-              </span>
+              <tr key={key}>
+                <td>{this.text_to_show.length}</td>
+                <td>{text.slice(0, text.indexOf(":"))}</td>
+                <td>
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: text
+                        .slice(starting_index, text.length)
+                        .replace(X, `<strong style="color : red">${X}</strong>`)
+                        .replace(
+                          Y,
+                          `<strong style="color : red">${Y}</strong>`
+                        ),
+                    }}
+                  />
+                </td>
+              </tr>
             );
 
             this.setState({
@@ -315,10 +448,22 @@ class App extends React.Component {
 
         if (text.substring(starting_index).startsWith(starting_words)) {
           this.text_to_show.push(
-            <span key={key}>
-              {text}
-              <br />
-            </span>
+            <tr key={key}>
+              <td>{this.text_to_show.length}</td>
+              <td>{text.slice(0, text.indexOf(":"))}</td>
+              <td>
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: text
+                      .slice(starting_index, text.length)
+                      .replace(
+                        starting_words,
+                        `<strong style="color : red">${starting_words}</strong>`
+                      ),
+                  }}
+                />
+              </td>
+            </tr>
           );
 
           this.setState({
@@ -339,10 +484,22 @@ class App extends React.Component {
           )
         ) {
           this.text_to_show.push(
-            <span key={key}>
-              {text}
-              <br />
-            </span>
+            <tr key={key}>
+              <td>{this.text_to_show.length}</td>
+              <td>{text.slice(0, text.indexOf(":"))}</td>
+              <td>
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: text
+                      .slice(starting_index, text.length)
+                      .replace(
+                        starting_words,
+                        `<strong style="color : red">${starting_words}</strong>`
+                      ),
+                  }}
+                />
+              </td>
+            </tr>
           );
 
           this.setState({
@@ -360,14 +517,28 @@ class App extends React.Component {
 
     if (punctuation_list.length === 0) {
       text_list.forEach((text, key) => {
+        var starting_index = text.indexOf(":") + 2;
+
         if (punctuation.includes(text.trim().slice(-1))) {
           var new_text = text.trim().slice(1, -1);
           if (new_text.endsWith(ending_words)) {
             this.text_to_show.push(
-              <span key={key}>
-                {text}
-                <br />
-              </span>
+              <tr key={key}>
+                <td>{this.text_to_show.length}</td>
+                <td>{text.slice(0, text.indexOf(":"))}</td>
+                <td>
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: text
+                        .slice(starting_index, text.length)
+                        .replace(
+                          ending_words,
+                          `<strong style="color : red">${ending_words}</strong>`
+                        ),
+                    }}
+                  />
+                </td>
+              </tr>
             );
 
             this.setState({
@@ -376,10 +547,22 @@ class App extends React.Component {
           }
         } else if (text.endsWith(ending_words)) {
           this.text_to_show.push(
-            <span key={key}>
-              {text}
-              <br />
-            </span>
+            <tr key={key}>
+              <td>{this.text_to_show.length}</td>
+              <td>{text.slice(0, text.indexOf(":"))}</td>
+              <td>
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: text
+                      .slice(starting_index, text.length)
+                      .replace(
+                        ending_words,
+                        `<strong style="color : red">${ending_words}</strong>`
+                      ),
+                  }}
+                />
+              </td>
+            </tr>
           );
 
           this.setState({
@@ -390,16 +573,29 @@ class App extends React.Component {
     } else {
       ending_words = ending_words.slice(0, 0 - punctuation_list.length - 2);
       text_list.forEach((text, key) => {
+        var starting_index = text.indexOf(":") + 2;
         if (punctuation_list.includes(text.trim().slice(-1))) {
           var new_text = text.trim().slice(1, -1);
 
           if (new_text.endsWith(ending_words)) {
             console.log("Here!");
             this.text_to_show.push(
-              <span key={key}>
-                {text}
-                <br />
-              </span>
+              <tr key={key}>
+                <td>{this.text_to_show.length}</td>
+                <td>{text.slice(0, text.indexOf(":"))}</td>
+                <td>
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: text
+                        .slice(starting_index, text.length)
+                        .replace(
+                          ending_words,
+                          `<strong style="color : red">${ending_words}</strong>`
+                        ),
+                    }}
+                  />
+                </td>
+              </tr>
             );
 
             this.setState({
@@ -417,12 +613,26 @@ class App extends React.Component {
 
     if (punctuation_list.length === 0) {
       text_list.forEach((text, key) => {
+        var starting_index = text.indexOf(":") + 2;
+
         if (text.includes(pair)) {
           this.text_to_show.push(
-            <span key={key}>
-              {text}
-              <br />
-            </span>
+            <tr key={key}>
+              <td>{this.text_to_show.length}</td>
+              <td>{text.slice(0, text.indexOf(":"))}</td>
+              <td>
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: text
+                      .slice(starting_index, text.length)
+                      .replace(
+                        pair,
+                        `<strong style="color : red">${pair}</strong>`
+                      ),
+                  }}
+                />
+              </td>
+            </tr>
           );
 
           this.setState({
@@ -433,15 +643,28 @@ class App extends React.Component {
     } else {
       pair = pair.trim().slice(0, 0 - punctuation_list.length - 2);
       text_list.forEach((text, key) => {
+        var starting_index = text.indexOf(":") + 2;
         if (
           text.includes(pair) &&
           punctuation_list.includes(text[text.indexOf(pair) + pair.length])
         ) {
           this.text_to_show.push(
-            <span key={key}>
-              {text}
-              <br />
-            </span>
+            <tr key={key}>
+              <td>{this.text_to_show.length}</td>
+              <td>{text.slice(0, text.indexOf(":"))}</td>
+              <td>
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: text
+                      .slice(starting_index, text.length)
+                      .replace(
+                        pair,
+                        `<strong style="color : red">${pair}</strong>`
+                      ),
+                  }}
+                />
+              </td>
+            </tr>
           );
 
           this.setState({
@@ -527,22 +750,34 @@ class App extends React.Component {
 
   render() {
     return (
-      <div class="wrap">
-        <div class="search">
+      <div className="wrap">
+        <div className="search">
           <input
             type="text"
-            class="searchTerm"
+            className="searchTerm"
             placeholder="Enter keyword..."
             value={this.state.value}
             onChange={this.handleChange}
           />
-
-          <button onClick={() => this.show_text(this.state.value)}>
+          <button
+            className="searchButton"
+            onClick={() => this.show_text(this.state.value)}
+          >
             Search
           </button>
         </div>
         <br />
-        <div>{this.text_to_show}</div>
+          <table className="container">
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th>Speaker ID</th>
+                <th>Concordance</th>
+              </tr>
+            </thead>
+            <tbody>{this.text_to_show}</tbody>
+          </table>
+
       </div>
     );
   }
