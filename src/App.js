@@ -46,19 +46,12 @@ class App extends React.Component {
 
           this.text_to_show.push(
             <tr key={key}>
-              <td>{this.text_to_show.length+1}</td>
+              <td>{this.text_to_show.length + 1}</td>
               <td>{text.slice(0, text.indexOf(":"))}</td>
+              <td>{text.slice(starting_index, text.indexOf(word))}</td>
+              <td style={{ color: "red" }}>{word}</td>
               <td>
-                <span
-                  dangerouslySetInnerHTML={{
-                    __html: text
-                      .slice(starting_index, text.length)
-                      .replace(
-                        word,
-                        `<strong style="color : red">${word}</strong>`
-                      ),
-                  }}
-                />
+                {text.slice(text.indexOf(word) + word.length, text.length)}
               </td>
             </tr>
           );
@@ -79,19 +72,12 @@ class App extends React.Component {
           var starting_index = text.indexOf(":") + 2;
           this.text_to_show.push(
             <tr key={key}>
-              <td>{this.text_to_show.length+1}</td>
+              <td>{this.text_to_show.length + 1}</td>
               <td>{text.slice(0, text.indexOf(":"))}</td>
+              <td>{text.slice(starting_index, text.indexOf(word))}</td>
+              <td style={{ color: "red" }}>{word}</td>
               <td>
-                <span
-                  dangerouslySetInnerHTML={{
-                    __html: text
-                      .slice(starting_index, text.length)
-                      .replace(
-                        word,
-                        `<strong style="color : red">${word}</strong>`
-                      ),
-                  }}
-                />
+                {text.slice(text.indexOf(word) + word.length, text.length)}
               </td>
             </tr>
           );
@@ -122,21 +108,17 @@ class App extends React.Component {
           if (x_index < y_index) {
             this.text_to_show.push(
               <tr key={key}>
-                <td>{this.text_to_show.length +1}</td>
+                <td>{this.text_to_show.length + 1}</td>
                 <td>{text.slice(0, text.indexOf(":"))}</td>
+                <td>{text.slice(starting_index, x_index)}</td>
                 <td>
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: text
-                        .slice(starting_index, text.length)
-                        .replace(X, `<strong style="color : red">${X}</strong>`)
-                        .replace(
-                          Y,
-                          `<strong style="color : red">${Y}</strong>`
-                        ),
-                    }}
-                  />
+                  <span>
+                    <strong style={{ color: "red" }}>{X}</strong>
+                    {text.slice(x_index, y_index + 1)}
+                    <strong style={{ color: "red" }}>{Y}</strong>
+                  </span>
                 </td>
+                <td>{text.slice(y_index, text.length)}</td>
               </tr>
             );
 
@@ -162,19 +144,15 @@ class App extends React.Component {
               <tr key={key}>
                 <td>{this.text_to_show.length + 1}</td>
                 <td>{text.slice(0, text.indexOf(":"))}</td>
+                <td>{text.slice(starting_index, x_index)}</td>
                 <td>
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: text
-                        .slice(starting_index, text.length)
-                        .replace(X, `<strong style="color : red">${X}</strong>`)
-                        .replace(
-                          Y,
-                          `<strong style="color : red">${Y}</strong>`
-                        ),
-                    }}
-                  />
+                  <span>
+                    <strong style={{ color: "red" }}>{X}</strong>
+                    {text.slice(x_index, y_index + 1)}
+                    <strong style={{ color: "red" }}>{Y}</strong>
+                  </span>
                 </td>
+                <td>{text.slice(y_index, text.length)}</td>
               </tr>
             );
             this.setState({
@@ -210,19 +188,15 @@ class App extends React.Component {
               <tr key={key}>
                 <td>{this.text_to_show.length + 1}</td>
                 <td>{text.slice(0, text.indexOf(":"))}</td>
+                <td>{text.slice(starting_index, x_index)}</td>
                 <td>
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: text
-                        .slice(starting_index, text.length)
-                        .replace(X, `<strong style="color : red">${X}</strong>`)
-                        .replace(
-                          Y,
-                          `<strong style="color : red">${Y}</strong>`
-                        ),
-                    }}
-                  />
+                  <span>
+                    <strong style={{ color: "red" }}>{X}</strong>
+                    {text.slice(x_index, y_index + 1)}
+                    <strong style={{ color: "red" }}>{Y}</strong>
+                  </span>
                 </td>
+                <td>{text.slice(y_index, text.length)}</td>
               </tr>
             );
 
@@ -245,19 +219,15 @@ class App extends React.Component {
               <tr key={key}>
                 <td>{this.text_to_show.length + 1}</td>
                 <td>{text.slice(0, text.indexOf(":"))}</td>
+                <td>{text.slice(starting_index, x_index)}</td>
                 <td>
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: text
-                        .slice(starting_index, text.length)
-                        .replace(X, `<strong style="color : red">${X}</strong>`)
-                        .replace(
-                          Y,
-                          `<strong style="color : red">${Y}</strong>`
-                        ),
-                    }}
-                  />
+                  <span>
+                    <strong style={{ color: "red" }}>{X}</strong>
+                    {text.slice(x_index, y_index + 1)}
+                    <strong style={{ color: "red" }}>{Y}</strong>
+                  </span>
                 </td>
+                <td>{text.slice(y_index, text.length)}</td>
               </tr>
             );
 
@@ -294,19 +264,15 @@ class App extends React.Component {
               <tr key={key}>
                 <td>{this.text_to_show.length + 1}</td>
                 <td>{text.slice(0, text.indexOf(":"))}</td>
+                <td>{text.slice(starting_index, x_index)}</td>
                 <td>
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: text
-                        .slice(starting_index, text.length)
-                        .replace(X, `<strong style="color : red">${X}</strong>`)
-                        .replace(
-                          Y,
-                          `<strong style="color : red">${Y}</strong>`
-                        ),
-                    }}
-                  />
+                  <span>
+                    <strong style={{ color: "red" }}>{X}</strong>
+                    {text.slice(x_index, y_index + 1)}
+                    <strong style={{ color: "red" }}>{Y}</strong>
+                  </span>
                 </td>
+                <td>{text.slice(y_index, text.length)}</td>
               </tr>
             );
 
@@ -329,19 +295,15 @@ class App extends React.Component {
               <tr key={key}>
                 <td>{this.text_to_show.length + 1}</td>
                 <td>{text.slice(0, text.indexOf(":"))}</td>
+                <td>{text.slice(starting_index, x_index)}</td>
                 <td>
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: text
-                        .slice(starting_index, text.length)
-                        .replace(X, `<strong style="color : red">${X}</strong>`)
-                        .replace(
-                          Y,
-                          `<strong style="color : red">${Y}</strong>`
-                        ),
-                    }}
-                  />
+                  <span>
+                    <strong style={{ color: "red" }}>{X}</strong>
+                    {text.slice(x_index, y_index + 1)}
+                    <strong style={{ color: "red" }}>{Y}</strong>
+                  </span>
                 </td>
+                <td>{text.slice(y_index, text.length)}</td>
               </tr>
             );
 
@@ -378,19 +340,15 @@ class App extends React.Component {
               <tr key={key}>
                 <td>{this.text_to_show.length + 1}</td>
                 <td>{text.slice(0, text.indexOf(":"))}</td>
+                <td>{text.slice(starting_index, x_index)}</td>
                 <td>
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: text
-                        .slice(starting_index, text.length)
-                        .replace(X, `<strong style="color : red">${X}</strong>`)
-                        .replace(
-                          Y,
-                          `<strong style="color : red">${Y}</strong>`
-                        ),
-                    }}
-                  />
+                  <span>
+                    <strong style={{ color: "red" }}>{X}</strong>
+                    {text.slice(x_index, y_index + 1)}
+                    <strong style={{ color: "red" }}>{Y}</strong>
+                  </span>
                 </td>
+                <td>{text.slice(y_index, text.length)}</td>
               </tr>
             );
 
@@ -413,19 +371,15 @@ class App extends React.Component {
               <tr key={key}>
                 <td>{this.text_to_show.length + 1}</td>
                 <td>{text.slice(0, text.indexOf(":"))}</td>
+                <td>{text.slice(starting_index, x_index)}</td>
                 <td>
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: text
-                        .slice(starting_index, text.length)
-                        .replace(X, `<strong style="color : red">${X}</strong>`)
-                        .replace(
-                          Y,
-                          `<strong style="color : red">${Y}</strong>`
-                        ),
-                    }}
-                  />
+                  <span>
+                    <strong style={{ color: "red" }}>{X}</strong>
+                    {text.slice(x_index, y_index + 1)}
+                    <strong style={{ color: "red" }}>{Y}</strong>
+                  </span>
                 </td>
+                <td>{text.slice(y_index, text.length)}</td>
               </tr>
             );
 
@@ -451,17 +405,17 @@ class App extends React.Component {
             <tr key={key}>
               <td>{this.text_to_show.length + 1}</td>
               <td>{text.slice(0, text.indexOf(":"))}</td>
+              <td> </td>
               <td>
-                <span
-                  dangerouslySetInnerHTML={{
-                    __html: text
-                      .slice(starting_index, text.length)
-                      .replace(
-                        starting_words,
-                        `<strong style="color : red">${starting_words}</strong>`
-                      ),
-                  }}
-                />
+                <span>
+                  <strong style={{ color: "red" }}>{starting_words}</strong>
+                </span>
+              </td>
+              <td>
+                {text.slice(
+                  starting_index + starting_words.length,
+                  text.length
+                )}
               </td>
             </tr>
           );
@@ -487,17 +441,17 @@ class App extends React.Component {
             <tr key={key}>
               <td>{this.text_to_show.length + 1}</td>
               <td>{text.slice(0, text.indexOf(":"))}</td>
+              <td> </td>
               <td>
-                <span
-                  dangerouslySetInnerHTML={{
-                    __html: text
-                      .slice(starting_index, text.length)
-                      .replace(
-                        starting_words,
-                        `<strong style="color : red">${starting_words}</strong>`
-                      ),
-                  }}
-                />
+                <span>
+                  <strong style={{ color: "red" }}>{starting_words}</strong>
+                </span>
+              </td>
+              <td>
+                {text.slice(
+                  starting_index + starting_words.length,
+                  text.length
+                )}
               </td>
             </tr>
           );
@@ -527,17 +481,14 @@ class App extends React.Component {
                 <td>{this.text_to_show.length + 1}</td>
                 <td>{text.slice(0, text.indexOf(":"))}</td>
                 <td>
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: text
-                        .slice(starting_index, text.length)
-                        .replace(
-                          ending_words,
-                          `<strong style="color : red">${ending_words}</strong>`
-                        ),
-                    }}
-                  />
+                  {text.slice(starting_index, text.indexOf(ending_words))}
                 </td>
+                <td>
+                  <span>
+                    <strong style={{ color: "red" }}>{ending_words}</strong>
+                  </span>
+                </td>
+                <td> </td>
               </tr>
             );
 
@@ -550,18 +501,13 @@ class App extends React.Component {
             <tr key={key}>
               <td>{this.text_to_show.length + 1}</td>
               <td>{text.slice(0, text.indexOf(":"))}</td>
+              <td>{text.slice(starting_index, text.indexOf(ending_words))}</td>
               <td>
-                <span
-                  dangerouslySetInnerHTML={{
-                    __html: text
-                      .slice(starting_index, text.length)
-                      .replace(
-                        ending_words,
-                        `<strong style="color : red">${ending_words}</strong>`
-                      ),
-                  }}
-                />
+                <span>
+                  <strong style={{ color: "red" }}>{ending_words}</strong>
+                </span>
               </td>
+              <td> </td>
             </tr>
           );
 
@@ -581,20 +527,17 @@ class App extends React.Component {
             console.log("Here!");
             this.text_to_show.push(
               <tr key={key}>
-                <td>{this.text_to_show.length+1}</td>
+                <td>{this.text_to_show.length + 1}</td>
                 <td>{text.slice(0, text.indexOf(":"))}</td>
                 <td>
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: text
-                        .slice(starting_index, text.length)
-                        .replace(
-                          ending_words,
-                          `<strong style="color : red">${ending_words}</strong>`
-                        ),
-                    }}
-                  />
+                  {text.slice(starting_index, text.indexOf(ending_words))}
                 </td>
+                <td>
+                  <span>
+                    <strong style={{ color: "red" }}>{ending_words}</strong>
+                  </span>
+                </td>
+                <td> </td>
               </tr>
             );
 
@@ -620,17 +563,14 @@ class App extends React.Component {
             <tr key={key}>
               <td>{this.text_to_show.length + 1}</td>
               <td>{text.slice(0, text.indexOf(":"))}</td>
+              <td>{text.slice(starting_index, text.indexOf(pair))}</td>
               <td>
-                <span
-                  dangerouslySetInnerHTML={{
-                    __html: text
-                      .slice(starting_index, text.length)
-                      .replace(
-                        pair,
-                        `<strong style="color : red">${pair}</strong>`
-                      ),
-                  }}
-                />
+                <span>
+                  <strong style={{ color: "red" }}>{pair}</strong>
+                </span>
+              </td>
+              <td>
+                {text.slice(text.indexOf(pair) + pair.length, text.length)}
               </td>
             </tr>
           );
@@ -650,19 +590,16 @@ class App extends React.Component {
         ) {
           this.text_to_show.push(
             <tr key={key}>
-              <td>{this.text_to_show.length+1}</td>
+              <td>{this.text_to_show.length + 1}</td>
               <td>{text.slice(0, text.indexOf(":"))}</td>
+              <td>{text.slice(starting_index, text.indexOf(pair))}</td>
               <td>
-                <span
-                  dangerouslySetInnerHTML={{
-                    __html: text
-                      .slice(starting_index, text.length)
-                      .replace(
-                        pair,
-                        `<strong style="color : red">${pair}</strong>`
-                      ),
-                  }}
-                />
+                <span>
+                  <strong style={{ color: "red" }}>{pair}</strong>
+                </span>
+              </td>
+              <td>
+                {text.slice(text.indexOf(pair) + pair.length, text.length)}
               </td>
             </tr>
           );
@@ -767,17 +704,18 @@ class App extends React.Component {
           </button>
         </div>
         <br />
-          <table className="container">
-            <thead>
-              <tr>
-                <th>No.</th>
-                <th>Speaker ID</th>
-                <th>Concordance</th>
-              </tr>
-            </thead>
-            <tbody>{this.text_to_show}</tbody>
-          </table>
-
+        <table className="container">
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Speaker ID</th>
+              <th>Before</th>
+              <th>Word</th>
+              <th>After</th>
+            </tr>
+          </thead>
+          <tbody>{this.text_to_show}</tbody>
+        </table>
       </div>
     );
   }
