@@ -36,6 +36,7 @@ class App extends React.Component {
   }
 
   find_identical_match(word, text_list, punctuation_list = []) {
+    console.log("In find_idential_match function");
     // Find the sentence with matching word
     if (punctuation_list.length === 0) {
       text_list.forEach((text, key) => {
@@ -61,7 +62,8 @@ class App extends React.Component {
         }
       });
     } else {
-      word = word.trim().slice(0, 0 - punctuation_list.length - 2);
+      word = word.trim().slice(0, word.indexOf("["));
+
       text_list.forEach((text, key) => {
         var index = text.indexOf(word);
 
@@ -612,6 +614,96 @@ class App extends React.Component {
     }
   }
 
+  double_words(text_list) {
+    //For XX - Returns all sentences with pair words
+    text_list.forEach((text, key) => {
+      var dictionary = {};
+      for (let i = text.indexOf(":") + 2; i < text.length; i++) {
+        if (dictionary[text[i]]) {
+          if (dictionary[text[i]] + 1 === i) {
+            this.text_to_show.push(
+              <tr key={key}>
+                <td>{this.text_to_show.length + 1}</td>
+                <td>{text.slice(0, text.indexOf(":"))}</td>
+                <td>
+                  {text.slice(text.indexOf(":") + 2, text.indexOf(text[i]))}
+                </td>
+                <td>
+                  <span>
+                    <strong style={{ color: "red" }}>
+                      {text[i - 1]}
+                      {text[i]}
+                    </strong>
+                  </span>
+                </td>
+                <td>{text.slice(text.indexOf(text[i]) + 2, text.length)}</td>
+              </tr>
+            );
+            break;
+          }
+        } else {
+          dictionary[text[i]] = i;
+        }
+      }
+    });
+  }
+
+  middle_words(word, text_list){
+    console.log(word)
+    if (word.length === 1){
+      text_list.forEach((text, key) => {
+        var word_index = text.indexOf(word);
+        if (text[word_index-1] === text[word_index+1]) {
+          console.log(`Sentenced found! - ${text}`);
+          this.text_to_show.push(
+            <tr key={key}>
+              <td>{this.text_to_show.length + 1}</td>
+              <td>{text.slice(0, text.indexOf(":"))}</td>
+              <td>
+                {text.slice(text.indexOf(":") + 2, word_index-1)}
+              </td>
+              <td>
+                <span>
+                  <strong style={{ color: "red" }}>
+                    {text[word_index-1]}{text[word_index]}{text[word_index+1]}
+                  </strong>
+                </span>
+              </td>
+              <td>{text.slice(word_index+2, text.length)}</td>
+            </tr>
+          );
+        }
+      })
+    } else{
+      text_list.forEach((text, key) =>{
+        var word_starting_index = text.indexOf(word[0]);
+        var word_ending_index = word_starting_index + word.length;
+
+        if(text[word_starting_index-1] === text[word_ending_index + 1] ){
+          console.log(`Sentenced found! - ${text}`);
+          this.text_to_show.push(
+          <tr key={key}>
+          <td>{this.text_to_show.length + 1}</td>
+          <td>{text.slice(0, text.indexOf(":"))}</td>
+          <td>
+            {text.slice(text.indexOf(":") + 2, word_starting_index-1)}
+          </td>
+          <td>
+            <span>
+              <strong style={{ color: "red" }}>
+                {text[word_starting_index-1]}{word}{text[word_ending_index + 1]}
+              </strong>
+            </span>
+          </td>
+          <td>{text.slice(word_ending_index +2, text.length)}</td>
+        </tr>
+          )
+        }
+      })
+    }
+
+  }
+
   show_text(input) {
     this.text_to_show = [];
     var allText = read_text_file(FILE);
@@ -627,10 +719,24 @@ class App extends React.Component {
       var last_ele = input.indexOf("]") - 1;
       const punctuation_list = [];
 
+      //Account for X[,!.?] punctuations at the end
+      // for (var i = first_ele; i <= last_ele; i++) {
+      //   punctuation_list.push(input[i]);
+      // }
+
+      let word = "";
       for (var i = first_ele; i <= last_ele; i++) {
-        punctuation_list.push(input[i]);
+        console.log(`input[i] = ${input[i]}`);
+        if (input[i] === " ") {
+          punctuation_list.push(word);
+          word = "";
+        } else {
+          word = word + input[i];
+          console.log(`word = ${word}`);
+        }
       }
 
+      punctuation_list.push(word);
       if (input.indexOf("*") > 0) {
         this.find_any_number_inbetweem(
           input,
@@ -665,7 +771,12 @@ class App extends React.Component {
         this.find_identical_match(input, this.state.text, punctuation_list);
       }
     } else {
-      if (input.indexOf("*") > 0) {
+      if (input === "XX") {
+        this.double_words(this.state.text);
+      } else if(input[0] === 'X' && input[input.length - 1] ==='X'){
+        this.middle_words(input.slice(1, input.length -1) ,this.state.text);
+      } 
+      else if (input.indexOf("*") > 0) {
         this.find_any_number_inbetweem(input, this.state.text);
       } else if (input.indexOf("...") > 0) {
         this.find_only_3_word_inbetween(input, this.state.text);
