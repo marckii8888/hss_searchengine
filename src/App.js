@@ -97,13 +97,13 @@ class App extends React.Component {
     var Y_index = word.indexOf("*") + 1;
 
     var X = word[X_index];
-    var Y = word[Y_index];
+    var Y = word.slice(Y_index);
 
     if (punctuation_list.length === 0) {
       text_list.forEach((text, key) => {
         var x_index = text.indexOf(X);
         var y_index = text.indexOf(Y);
-
+        console.log(text.slice(x_index, y_index + 1))
         var starting_index = text.indexOf(":") + 2;
 
         if (x_index !== -1 && y_index !== -1) {
@@ -116,11 +116,11 @@ class App extends React.Component {
                 <td>
                   <span>
                     <strong style={{ color: "red" }}>{X}</strong>
-                    {text.slice(x_index, y_index + 1)}
+                    {text.slice(x_index+1, y_index)}
                     <strong style={{ color: "red" }}>{Y}</strong>
                   </span>
                 </td>
-                <td>{text.slice(y_index, text.length)}</td>
+                <td>{text.slice(y_index + 1, text.length)}</td>
               </tr>
             );
 
@@ -134,7 +134,7 @@ class App extends React.Component {
       text_list.forEach((text, key) => {
         var x_index = text.indexOf(X);
         var y_index = text.indexOf(Y);
-
+        
         var starting_index = text.indexOf(":") + 2;
 
         if (x_index !== -1 && y_index !== -1) {
@@ -150,11 +150,11 @@ class App extends React.Component {
                 <td>
                   <span>
                     <strong style={{ color: "red" }}>{X}</strong>
-                    {text.slice(x_index, y_index + 1)}
+                    {text.slice(x_index+1, y_index)}
                     <strong style={{ color: "red" }}>{Y}</strong>
                   </span>
                 </td>
-                <td>{text.slice(y_index, text.length)}</td>
+                <td>{text.slice(y_index + 1, text.length)}</td>
               </tr>
             );
             this.setState({
@@ -194,11 +194,11 @@ class App extends React.Component {
                 <td>
                   <span>
                     <strong style={{ color: "red" }}>{X}</strong>
-                    {text.slice(x_index, y_index + 1)}
+                    {text.slice(x_index+1, y_index)}
                     <strong style={{ color: "red" }}>{Y}</strong>
                   </span>
                 </td>
-                <td>{text.slice(y_index, text.length)}</td>
+                <td>{text.slice(y_index+1, text.length)}</td>
               </tr>
             );
 
@@ -225,11 +225,11 @@ class App extends React.Component {
                 <td>
                   <span>
                     <strong style={{ color: "red" }}>{X}</strong>
-                    {text.slice(x_index, y_index + 1)}
+                    {text.slice(x_index+1, y_index)}
                     <strong style={{ color: "red" }}>{Y}</strong>
                   </span>
                 </td>
-                <td>{text.slice(y_index, text.length)}</td>
+                <td>{text.slice(y_index+1, text.length)}</td>
               </tr>
             );
 
@@ -270,11 +270,11 @@ class App extends React.Component {
                 <td>
                   <span>
                     <strong style={{ color: "red" }}>{X}</strong>
-                    {text.slice(x_index, y_index + 1)}
+                    {text.slice(x_index+1, y_index)}
                     <strong style={{ color: "red" }}>{Y}</strong>
                   </span>
                 </td>
-                <td>{text.slice(y_index, text.length)}</td>
+                <td>{text.slice(y_index+1, text.length)}</td>
               </tr>
             );
 
@@ -301,11 +301,11 @@ class App extends React.Component {
                 <td>
                   <span>
                     <strong style={{ color: "red" }}>{X}</strong>
-                    {text.slice(x_index, y_index + 1)}
+                    {text.slice(x_index+1, y_index)}
                     <strong style={{ color: "red" }}>{Y}</strong>
                   </span>
                 </td>
-                <td>{text.slice(y_index, text.length)}</td>
+                <td>{text.slice(y_index+1, text.length)}</td>
               </tr>
             );
 
@@ -346,11 +346,11 @@ class App extends React.Component {
                 <td>
                   <span>
                     <strong style={{ color: "red" }}>{X}</strong>
-                    {text.slice(x_index, y_index + 1)}
+                    {text.slice(x_index+1, y_index)}
                     <strong style={{ color: "red" }}>{Y}</strong>
                   </span>
                 </td>
-                <td>{text.slice(y_index, text.length)}</td>
+                <td>{text.slice(y_index+1, text.length)}</td>
               </tr>
             );
 
@@ -377,11 +377,11 @@ class App extends React.Component {
                 <td>
                   <span>
                     <strong style={{ color: "red" }}>{X}</strong>
-                    {text.slice(x_index, y_index + 1)}
+                    {text.slice(x_index+1, y_index)}
                     <strong style={{ color: "red" }}>{Y}</strong>
                   </span>
                 </td>
-                <td>{text.slice(y_index, text.length)}</td>
+                <td>{text.slice(y_index+1, text.length)}</td>
               </tr>
             );
 
