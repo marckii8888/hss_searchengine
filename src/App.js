@@ -172,7 +172,7 @@ class App extends React.Component {
     var Y_index = word.indexOf(".") + 1;
 
     var X = word[X_index];
-    var Y = word[Y_index];
+    var Y = word.slice(Y_index);
 
     if (punctuation_list.length !== 0) {
       text_list.forEach((text, key) => {
@@ -248,7 +248,7 @@ class App extends React.Component {
     var Y_index = word.indexOf("..") + 2;
 
     var X = word[X_index];
-    var Y = word[Y_index];
+    var Y = word.slice(Y_index);
 
     if (punctuation_list.length !== 0) {
       text_list.forEach((text, key) => {
@@ -324,7 +324,7 @@ class App extends React.Component {
     var Y_index = word.indexOf("...") + 3;
 
     var X = word[X_index];
-    var Y = word[Y_index];
+    var Y = word.slice(Y_index);
 
     if (punctuation_list.length !== 0) {
       text_list.forEach((text, key) => {
