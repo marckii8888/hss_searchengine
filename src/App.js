@@ -649,11 +649,11 @@ class App extends React.Component {
   }
 
   middle_words(word, text_list){
-    console.log(word)
+    // For X{word}X
     if (word.length === 1){
       text_list.forEach((text, key) => {
         var word_index = text.indexOf(word);
-        if (text[word_index-1] === text[word_index+1]) {
+        if (text[word_index-1] === text[word_index+1] && text) {
           console.log(`Sentenced found! - ${text}`);
           this.text_to_show.push(
             <tr key={key}>
@@ -679,7 +679,7 @@ class App extends React.Component {
         var word_starting_index = text.indexOf(word[0]);
         var word_ending_index = word_starting_index + word.length;
 
-        if(text[word_starting_index-1] === text[word_ending_index + 1] ){
+        if(text[word_starting_index-1] === text[word_ending_index + 1] && text){
           console.log(`Sentenced found! - ${text}`);
           this.text_to_show.push(
           <tr key={key}>
