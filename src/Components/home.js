@@ -58,7 +58,13 @@ class Home extends React.Component {
                       prev: key - 1 < 0 ? null : text_list[key - 1],
                       next:
                         key + 1 > text_list.length ? null : text_list[key + 1],
-                      word: word,
+                      word: `${text.slice(
+                        starting_index,
+                        text.indexOf(word)
+                      )}${word}${text.slice(
+                        text.indexOf(word) + word.length,
+                        text.length
+                      )}`,
                     },
                   }}
                 >
@@ -101,7 +107,13 @@ class Home extends React.Component {
                       prev: key - 1 < 0 ? null : text_list[key - 1],
                       next:
                         key + 1 > text_list.length ? null : text_list[key + 1],
-                      word: word,
+                      word: `${text.slice(
+                        starting_index,
+                        text.indexOf(word)
+                      )}${word}${text.slice(
+                        text.indexOf(word) + word.length,
+                        text.length
+                      )}`,
                     },
                   }}
                 >
@@ -133,7 +145,7 @@ class Home extends React.Component {
       text_list.forEach((text, key) => {
         var x_index = text.indexOf(X);
         var y_index = text.indexOf(Y);
-        console.log(text.slice(x_index, y_index + 1));
+
         var starting_index = text.indexOf(":") + 2;
 
         if (x_index !== -1 && y_index !== -1) {
@@ -144,11 +156,31 @@ class Home extends React.Component {
                 <td>{text.slice(0, text.indexOf(":"))}</td>
                 <td>{text.slice(starting_index, x_index)}</td>
                 <td>
-                  <span>
-                    <strong style={{ color: "red" }}>{X}</strong>
-                    {text.slice(x_index + 1, y_index)}
-                    <strong style={{ color: "red" }}>{Y}</strong>
-                  </span>
+                  <Link
+                    style={{ textDecoration: "none", color: "white" }}
+                    to={{
+                      pathname: "/search",
+                      state: {
+                        current: text_list[key],
+                        prev: key - 1 < 0 ? null : text_list[key - 1],
+                        next:
+                          key + 1 > text_list.length
+                            ? null
+                            : text_list[key + 1],
+                        word: `${text.slice(starting_index, x_index)}<span>
+                        <strong style={{ color: "red" }}>${X}</strong>
+                        ${text.slice(x_index + 1, y_index)}
+                        <strong style={{ color: "red" }}>${Y}</strong>
+                      </span>${text.slice(y_index + 1, text.length)}`,
+                      },
+                    }}
+                  >
+                    <span>
+                      <strong style={{ color: "red" }}>{X}</strong>
+                      {text.slice(x_index + 1, y_index)}
+                      <strong style={{ color: "red" }}>{Y}</strong>
+                    </span>
+                  </Link>
                 </td>
                 <td>{text.slice(y_index + 1, text.length)}</td>
               </tr>
@@ -178,11 +210,31 @@ class Home extends React.Component {
                 <td>{text.slice(0, text.indexOf(":"))}</td>
                 <td>{text.slice(starting_index, x_index)}</td>
                 <td>
-                  <span>
-                    <strong style={{ color: "red" }}>{X}</strong>
-                    {text.slice(x_index + 1, y_index)}
-                    <strong style={{ color: "red" }}>{Y}</strong>
-                  </span>
+                  <Link
+                    style={{ textDecoration: "none", color: "white" }}
+                    to={{
+                      pathname: "/search",
+                      state: {
+                        current: text_list[key],
+                        prev: key - 1 < 0 ? null : text_list[key - 1],
+                        next:
+                          key + 1 > text_list.length
+                            ? null
+                            : text_list[key + 1],
+                        word: `${text.slice(starting_index, x_index)}<span>
+                        <strong style={{ color: "red" }}>${X}</strong>
+                        ${text.slice(x_index + 1, y_index)}
+                        <strong style={{ color: "red" }}>${Y}</strong>
+                      </span>${text.slice(y_index + 1, text.length)}`,
+                      },
+                    }}
+                  >
+                    <span>
+                      <strong style={{ color: "red" }}>{X}</strong>
+                      {text.slice(x_index + 1, y_index)}
+                      <strong style={{ color: "red" }}>{Y}</strong>
+                    </span>
+                  </Link>
                 </td>
                 <td>{text.slice(y_index + 1, text.length)}</td>
               </tr>
@@ -222,11 +274,31 @@ class Home extends React.Component {
                 <td>{text.slice(0, text.indexOf(":"))}</td>
                 <td>{text.slice(starting_index, x_index)}</td>
                 <td>
-                  <span>
-                    <strong style={{ color: "red" }}>{X}</strong>
-                    {text.slice(x_index + 1, y_index)}
-                    <strong style={{ color: "red" }}>{Y}</strong>
-                  </span>
+                  <Link
+                    style={{ textDecoration: "none", color: "white" }}
+                    to={{
+                      pathname: "/search",
+                      state: {
+                        current: text_list[key],
+                        prev: key - 1 < 0 ? null : text_list[key - 1],
+                        next:
+                          key + 1 > text_list.length
+                            ? null
+                            : text_list[key + 1],
+                        word: `${text.slice(starting_index, x_index)}<span>
+                        <strong style={{ color: "red" }}>${X}</strong>
+                        ${text.slice(x_index + 1, y_index)}
+                        <strong style={{ color: "red" }}>${Y}</strong>
+                      </span>${text.slice(y_index + 1, text.length)}`,
+                      },
+                    }}
+                  >
+                    <span>
+                      <strong style={{ color: "red" }}>{X}</strong>
+                      {text.slice(x_index + 1, y_index)}
+                      <strong style={{ color: "red" }}>{Y}</strong>
+                    </span>
+                  </Link>
                 </td>
                 <td>{text.slice(y_index + 1, text.length)}</td>
               </tr>
@@ -253,11 +325,31 @@ class Home extends React.Component {
                 <td>{text.slice(0, text.indexOf(":"))}</td>
                 <td>{text.slice(starting_index, x_index)}</td>
                 <td>
-                  <span>
-                    <strong style={{ color: "red" }}>{X}</strong>
-                    {text.slice(x_index + 1, y_index)}
-                    <strong style={{ color: "red" }}>{Y}</strong>
-                  </span>
+                  <Link
+                    style={{ textDecoration: "none", color: "white" }}
+                    to={{
+                      pathname: "/search",
+                      state: {
+                        current: text_list[key],
+                        prev: key - 1 < 0 ? null : text_list[key - 1],
+                        next:
+                          key + 1 > text_list.length
+                            ? null
+                            : text_list[key + 1],
+                        word: `${text.slice(starting_index, x_index)}<span>
+                        <strong style={{ color: "red" }}>${X}</strong>
+                        ${text.slice(x_index + 1, y_index)}
+                        <strong style={{ color: "red" }}>${Y}</strong>
+                      </span>${text.slice(y_index + 1, text.length)}`,
+                      },
+                    }}
+                  >
+                    <span>
+                      <strong style={{ color: "red" }}>{X}</strong>
+                      {text.slice(x_index + 1, y_index)}
+                      <strong style={{ color: "red" }}>{Y}</strong>
+                    </span>
+                  </Link>
                 </td>
                 <td>{text.slice(y_index + 1, text.length)}</td>
               </tr>
@@ -277,7 +369,7 @@ class Home extends React.Component {
     var X_index = word.indexOf("..") - 1;
     var Y_index = word.indexOf("..") + 2;
 
-    var X = word[X_index];
+    var X = word.slice(X_index);
     var Y = word.slice(Y_index);
 
     if (punctuation_list.length !== 0) {
@@ -298,11 +390,31 @@ class Home extends React.Component {
                 <td>{text.slice(0, text.indexOf(":"))}</td>
                 <td>{text.slice(starting_index, x_index)}</td>
                 <td>
-                  <span>
-                    <strong style={{ color: "red" }}>{X}</strong>
-                    {text.slice(x_index + 1, y_index)}
-                    <strong style={{ color: "red" }}>{Y}</strong>
-                  </span>
+                  <Link
+                    style={{ textDecoration: "none", color: "white" }}
+                    to={{
+                      pathname: "/search",
+                      state: {
+                        current: text_list[key],
+                        prev: key - 1 < 0 ? null : text_list[key - 1],
+                        next:
+                          key + 1 > text_list.length
+                            ? null
+                            : text_list[key + 1],
+                        word: `${text.slice(starting_index, x_index)}<span>
+                        <strong style={{ color: "red" }}>${X}</strong>
+                        ${text.slice(x_index + 1, y_index)}
+                        <strong style={{ color: "red" }}>${Y}</strong>
+                      </span>${text.slice(y_index + 1, text.length)}`,
+                      },
+                    }}
+                  >
+                    <span>
+                      <strong style={{ color: "red" }}>{X}</strong>
+                      {text.slice(x_index + 1, y_index)}
+                      <strong style={{ color: "red" }}>{Y}</strong>
+                    </span>
+                  </Link>
                 </td>
                 <td>{text.slice(y_index + 1, text.length)}</td>
               </tr>
@@ -329,11 +441,31 @@ class Home extends React.Component {
                 <td>{text.slice(0, text.indexOf(":"))}</td>
                 <td>{text.slice(starting_index, x_index)}</td>
                 <td>
-                  <span>
-                    <strong style={{ color: "red" }}>{X}</strong>
-                    {text.slice(x_index + 1, y_index)}
-                    <strong style={{ color: "red" }}>{Y}</strong>
-                  </span>
+                  <Link
+                    style={{ textDecoration: "none", color: "white" }}
+                    to={{
+                      pathname: "/search",
+                      state: {
+                        current: text_list[key],
+                        prev: key - 1 < 0 ? null : text_list[key - 1],
+                        next:
+                          key + 1 > text_list.length
+                            ? null
+                            : text_list[key + 1],
+                        word: `${text.slice(starting_index, x_index)}<span>
+                        <strong style={{ color: "red" }}>${X}</strong>
+                        ${text.slice(x_index + 1, y_index)}
+                        <strong style={{ color: "red" }}>${Y}</strong>
+                      </span>${text.slice(y_index + 1, text.length)}`,
+                      },
+                    }}
+                  >
+                    <span>
+                      <strong style={{ color: "red" }}>{X}</strong>
+                      {text.slice(x_index + 1, y_index)}
+                      <strong style={{ color: "red" }}>{Y}</strong>
+                    </span>
+                  </Link>
                 </td>
                 <td>{text.slice(y_index + 1, text.length)}</td>
               </tr>
@@ -353,7 +485,7 @@ class Home extends React.Component {
     var X_index = word.indexOf("...") - 1;
     var Y_index = word.indexOf("...") + 3;
 
-    var X = word[X_index];
+    var X = word.slice(X_index);
     var Y = word.slice(Y_index);
 
     if (punctuation_list.length !== 0) {
@@ -374,11 +506,31 @@ class Home extends React.Component {
                 <td>{text.slice(0, text.indexOf(":"))}</td>
                 <td>{text.slice(starting_index, x_index)}</td>
                 <td>
-                  <span>
-                    <strong style={{ color: "red" }}>{X}</strong>
-                    {text.slice(x_index + 1, y_index)}
-                    <strong style={{ color: "red" }}>{Y}</strong>
-                  </span>
+                  <Link
+                    style={{ textDecoration: "none", color: "white" }}
+                    to={{
+                      pathname: "/search",
+                      state: {
+                        current: text_list[key],
+                        prev: key - 1 < 0 ? null : text_list[key - 1],
+                        next:
+                          key + 1 > text_list.length
+                            ? null
+                            : text_list[key + 1],
+                        word: `${text.slice(starting_index, x_index)}<span>
+                        <strong style={{ color: "red" }}>${X}</strong>
+                        ${text.slice(x_index + 1, y_index)}
+                        <strong style={{ color: "red" }}>${Y}</strong>
+                      </span>${text.slice(y_index + 1, text.length)}`,
+                      },
+                    }}
+                  >
+                    <span>
+                      <strong style={{ color: "red" }}>{X}</strong>
+                      {text.slice(x_index + 1, y_index)}
+                      <strong style={{ color: "red" }}>{Y}</strong>
+                    </span>
+                  </Link>
                 </td>
                 <td>{text.slice(y_index + 1, text.length)}</td>
               </tr>
@@ -405,11 +557,31 @@ class Home extends React.Component {
                 <td>{text.slice(0, text.indexOf(":"))}</td>
                 <td>{text.slice(starting_index, x_index)}</td>
                 <td>
-                  <span>
-                    <strong style={{ color: "red" }}>{X}</strong>
-                    {text.slice(x_index + 1, y_index)}
-                    <strong style={{ color: "red" }}>{Y}</strong>
-                  </span>
+                  <Link
+                    style={{ textDecoration: "none", color: "white" }}
+                    to={{
+                      pathname: "/search",
+                      state: {
+                        current: text_list[key],
+                        prev: key - 1 < 0 ? null : text_list[key - 1],
+                        next:
+                          key + 1 > text_list.length
+                            ? null
+                            : text_list[key + 1],
+                        word: `${text.slice(starting_index, x_index)}<span>
+                        <strong style={{ color: "red" }}>${X}</strong>
+                        ${text.slice(x_index + 1, y_index)}
+                        <strong style={{ color: "red" }}>${Y}</strong>
+                      </span>${text.slice(y_index + 1, text.length)}`,
+                      },
+                    }}
+                  >
+                    <span>
+                      <strong style={{ color: "red" }}>{X}</strong>
+                      {text.slice(x_index + 1, y_index)}
+                      <strong style={{ color: "red" }}>{Y}</strong>
+                    </span>
+                  </Link>
                 </td>
                 <td>{text.slice(y_index + 1, text.length)}</td>
               </tr>
@@ -439,9 +611,28 @@ class Home extends React.Component {
               <td>{text.slice(0, text.indexOf(":"))}</td>
               <td> </td>
               <td>
-                <span>
-                  <strong style={{ color: "red" }}>{starting_words}</strong>
-                </span>
+                <Link
+                  style={{ textDecoration: "none", color: "white" }}
+                  to={{
+                    pathname: "/search",
+                    state: {
+                      current: text_list[key],
+                      prev: key - 1 < 0 ? null : text_list[key - 1],
+                      next:
+                        key + 1 > text_list.length ? null : text_list[key + 1],
+                      word: `<span>
+                        <strong style={{ color: "red" }}>${starting_words}</strong>
+                      </span>${text.slice(
+                        starting_index + starting_words.length,
+                        text.length
+                      )}`,
+                    },
+                  }}
+                >
+                  <span>
+                    <strong style={{ color: "red" }}>{starting_words}</strong>
+                  </span>
+                </Link>
               </td>
               <td>
                 {text.slice(
@@ -475,9 +666,28 @@ class Home extends React.Component {
               <td>{text.slice(0, text.indexOf(":"))}</td>
               <td> </td>
               <td>
-                <span>
-                  <strong style={{ color: "red" }}>{starting_words}</strong>
-                </span>
+                <Link
+                  style={{ textDecoration: "none", color: "white" }}
+                  to={{
+                    pathname: "/search",
+                    state: {
+                      current: text_list[key],
+                      prev: key - 1 < 0 ? null : text_list[key - 1],
+                      next:
+                        key + 1 > text_list.length ? null : text_list[key + 1],
+                      word: `<span>
+                        <strong style={{ color: "red" }}>${starting_words}</strong>
+                      </span>${text.slice(
+                        starting_index + starting_words.length,
+                        text.length
+                      )}`,
+                    },
+                  }}
+                >
+                  <span>
+                    <strong style={{ color: "red" }}>{starting_words}</strong>
+                  </span>
+                </Link>
               </td>
               <td>
                 {text.slice(
@@ -516,9 +726,30 @@ class Home extends React.Component {
                   {text.slice(starting_index, text.indexOf(ending_words))}
                 </td>
                 <td>
-                  <span>
-                    <strong style={{ color: "red" }}>{ending_words}</strong>
-                  </span>
+                  <Link
+                    style={{ textDecoration: "none", color: "white" }}
+                    to={{
+                      pathname: "/search",
+                      state: {
+                        current: text_list[key],
+                        prev: key - 1 < 0 ? null : text_list[key - 1],
+                        next:
+                          key + 1 > text_list.length
+                            ? null
+                            : text_list[key + 1],
+                        word: `${text.slice(
+                          starting_index,
+                          text.indexOf(ending_words)
+                        )}<span>
+                        <strong style={{ color: "red" }}>${ending_words}</strong>
+                      </span>`,
+                      },
+                    }}
+                  >
+                    <span>
+                      <strong style={{ color: "red" }}>{ending_words}</strong>
+                    </span>
+                  </Link>
                 </td>
                 <td> </td>
               </tr>
@@ -535,9 +766,28 @@ class Home extends React.Component {
               <td>{text.slice(0, text.indexOf(":"))}</td>
               <td>{text.slice(starting_index, text.indexOf(ending_words))}</td>
               <td>
-                <span>
-                  <strong style={{ color: "red" }}>{ending_words}</strong>
-                </span>
+                <Link
+                  style={{ textDecoration: "none", color: "white" }}
+                  to={{
+                    pathname: "/search",
+                    state: {
+                      current: text_list[key],
+                      prev: key - 1 < 0 ? null : text_list[key - 1],
+                      next:
+                        key + 1 > text_list.length ? null : text_list[key + 1],
+                      word: `${text.slice(
+                        starting_index,
+                        text.indexOf(ending_words)
+                      )}<span>
+                        <strong style={{ color: "red" }}>${ending_words}</strong>
+                      </span>`,
+                    },
+                  }}
+                >
+                  <span>
+                    <strong style={{ color: "red" }}>{ending_words}</strong>
+                  </span>
+                </Link>
               </td>
               <td> </td>
             </tr>
@@ -565,9 +815,30 @@ class Home extends React.Component {
                   {text.slice(starting_index, text.indexOf(ending_words))}
                 </td>
                 <td>
-                  <span>
-                    <strong style={{ color: "red" }}>{ending_words}</strong>
-                  </span>
+                  <Link
+                    style={{ textDecoration: "none", color: "white" }}
+                    to={{
+                      pathname: "/search",
+                      state: {
+                        current: text_list[key],
+                        prev: key - 1 < 0 ? null : text_list[key - 1],
+                        next:
+                          key + 1 > text_list.length
+                            ? null
+                            : text_list[key + 1],
+                        word: `${text.slice(
+                          starting_index,
+                          text.indexOf(ending_words)
+                        )}<span>
+                        <strong style={{ color: "red" }}>${ending_words}</strong>
+                      </span>`,
+                      },
+                    }}
+                  >
+                    <span>
+                      <strong style={{ color: "red" }}>{ending_words}</strong>
+                    </span>
+                  </Link>
                 </td>
                 <td> </td>
               </tr>
@@ -597,9 +868,31 @@ class Home extends React.Component {
               <td>{text.slice(0, text.indexOf(":"))}</td>
               <td>{text.slice(starting_index, text.indexOf(pair))}</td>
               <td>
-                <span>
-                  <strong style={{ color: "red" }}>{pair}</strong>
-                </span>
+                <Link
+                  style={{ textDecoration: "none", color: "white" }}
+                  to={{
+                    pathname: "/search",
+                    state: {
+                      current: text_list[key],
+                      prev: key - 1 < 0 ? null : text_list[key - 1],
+                      next:
+                        key + 1 > text_list.length ? null : text_list[key + 1],
+                      word: `${text.slice(
+                        starting_index,
+                        text.indexOf(pair)
+                      )}<span>
+                        <strong style={{ color: "red" }}>${pair}</strong>
+                      </span>${text.slice(
+                        text.indexOf(pair) + pair.length,
+                        text.length
+                      )}`,
+                    },
+                  }}
+                >
+                  <span>
+                    <strong style={{ color: "red" }}>{pair}</strong>
+                  </span>
+                </Link>
               </td>
               <td>
                 {text.slice(text.indexOf(pair) + pair.length, text.length)}
@@ -626,9 +919,31 @@ class Home extends React.Component {
               <td>{text.slice(0, text.indexOf(":"))}</td>
               <td>{text.slice(starting_index, text.indexOf(pair))}</td>
               <td>
-                <span>
-                  <strong style={{ color: "red" }}>{pair}</strong>
-                </span>
+                <Link
+                  style={{ textDecoration: "none", color: "white" }}
+                  to={{
+                    pathname: "/search",
+                    state: {
+                      current: text_list[key],
+                      prev: key - 1 < 0 ? null : text_list[key - 1],
+                      next:
+                        key + 1 > text_list.length ? null : text_list[key + 1],
+                      word: `${text.slice(
+                        starting_index,
+                        text.indexOf(pair)
+                      )}<span>
+                        <strong style={{ color: "red" }}>${pair}</strong>
+                      </span>${text.slice(
+                        text.indexOf(pair) + pair.length,
+                        text.length
+                      )}`,
+                    },
+                  }}
+                >
+                  <span>
+                    <strong style={{ color: "red" }}>{pair}</strong>
+                  </span>
+                </Link>
               </td>
               <td>
                 {text.slice(text.indexOf(pair) + pair.length, text.length)}
@@ -659,12 +974,39 @@ class Home extends React.Component {
                   {text.slice(text.indexOf(":") + 2, text.indexOf(text[i]))}
                 </td>
                 <td>
-                  <span>
-                    <strong style={{ color: "red" }}>
-                      {text[i - 1]}
-                      {text[i]}
-                    </strong>
-                  </span>
+                  <Link
+                    style={{ textDecoration: "none", color: "white" }}
+                    to={{
+                      pathname: "/search",
+                      state: {
+                        current: text_list[key],
+                        prev: key - 1 < 0 ? null : text_list[key - 1],
+                        next:
+                          key + 1 > text_list.length
+                            ? null
+                            : text_list[key + 1],
+                        word: `${text.slice(
+                          text.indexOf(":") + 2,
+                          text.indexOf(text[i])
+                        )}<span>
+                      <strong style={{ color: "red" }}>
+                        ${text[i - 1]}
+                        ${text[i]}
+                      </strong>
+                    </span>${text.slice(
+                      text.indexOf(text[i]) + 2,
+                      text.length
+                    )}`,
+                      },
+                    }}
+                  >
+                    <span>
+                      <strong style={{ color: "red" }}>
+                        {text[i - 1]}
+                        {text[i]}
+                      </strong>
+                    </span>
+                  </Link>
                 </td>
                 <td>{text.slice(text.indexOf(text[i]) + 2, text.length)}</td>
               </tr>
@@ -691,13 +1033,36 @@ class Home extends React.Component {
               <td>{text.slice(0, text.indexOf(":"))}</td>
               <td>{text.slice(text.indexOf(":") + 2, word_index - 1)}</td>
               <td>
-                <span>
-                  <strong style={{ color: "red" }}>
-                    {text[word_index - 1]}
-                    {text[word_index]}
-                    {text[word_index + 1]}
-                  </strong>
-                </span>
+                <Link
+                  style={{ textDecoration: "none", color: "white" }}
+                  to={{
+                    pathname: "/search",
+                    state: {
+                      current: text_list[key],
+                      prev: key - 1 < 0 ? null : text_list[key - 1],
+                      next:
+                        key + 1 > text_list.length ? null : text_list[key + 1],
+                      word: `${text.slice(
+                        text.indexOf(":") + 2,
+                        word_index - 1
+                      )}<span>
+                      <strong style={{ color: "red" }}>
+                        ${text[word_index - 1]}
+                        ${text[word_index]}
+                        ${text[word_index + 1]}
+                      </strong>
+                    </span>${text.slice(word_index + 2, text.length)}`,
+                    },
+                  }}
+                >
+                  <span>
+                    <strong style={{ color: "red" }}>
+                      {text[word_index - 1]}
+                      {text[word_index]}
+                      {text[word_index + 1]}
+                    </strong>
+                  </span>
+                </Link>
               </td>
               <td>{text.slice(word_index + 2, text.length)}</td>
             </tr>
@@ -722,13 +1087,36 @@ class Home extends React.Component {
                 {text.slice(text.indexOf(":") + 2, word_starting_index - 1)}
               </td>
               <td>
-                <span>
-                  <strong style={{ color: "red" }}>
-                    {text[word_starting_index - 1]}
-                    {word}
-                    {text[word_ending_index + 1]}
-                  </strong>
-                </span>
+                <Link
+                  style={{ textDecoration: "none", color: "white" }}
+                  to={{
+                    pathname: "/search",
+                    state: {
+                      current: text_list[key],
+                      prev: key - 1 < 0 ? null : text_list[key - 1],
+                      next:
+                        key + 1 > text_list.length ? null : text_list[key + 1],
+                      word: `${text.slice(
+                        text.indexOf(":") + 2,
+                        word_starting_index - 1
+                      )}<span>
+                      <strong style={{ color: "red" }}>
+                        ${text[word_starting_index - 1]}
+                        ${word}
+                        ${text[word_ending_index + 1]}
+                      </strong>
+                    </span>${text.slice(word_ending_index + 2, text.length)}`,
+                    },
+                  }}
+                >
+                  <span>
+                    <strong style={{ color: "red" }}>
+                      {text[word_starting_index - 1]}
+                      {word}
+                      {text[word_ending_index + 1]}
+                    </strong>
+                  </span>
+                </Link>
               </td>
               <td>{text.slice(word_ending_index + 2, text.length)}</td>
             </tr>

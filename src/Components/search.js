@@ -3,7 +3,6 @@ import React from "react";
 class Search extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props.location.state);
     this.state = {
       current: props.location.state.current,
       prev: props.location.state.prev,
@@ -12,8 +11,33 @@ class Search extends React.Component {
     };
   }
 
+  format(string) {
+    //   <td>
+    //   {this.state.current.slice(
+    //     this.state.current.indexOf(":") + 2,
+    //     this.state.current.indexOf(this.state.word)
+    //   )}
+    //   <div style={{ color: "red" }}>{this.state.word}</div>
+    //   {this.state.current.slice(
+    //     this.state.current.indexOf(this.state.word) +
+    //       this.state.word.length
+    //   )}
+    // </td>
+    //   <div>
+    //   {text.slice(starting_index, x_index)}
+    //   <span>
+    //     <strong style={{ color: "red" }}>{X}</strong>
+    //     {text.slice(x_index + 1, y_index)}
+    //     <strong style={{ color: "red" }}>{Y}</strong>
+    //   </span>
+    //   {text.slice(y_index + 1, text.length)}
+    // </div>
+  }
+
   render() {
-    console.log(this.state.word);
+    console.log(
+      `prev:${this.state.prev} \n current: ${this.state.current} \n next:${this.state.next}`
+    );
     return (
       <div className="wrap">
         <table className="container">
@@ -36,15 +60,7 @@ class Search extends React.Component {
                 {this.state.current.slice(0, this.state.current.indexOf(":"))}
               </td>
               <td>
-                {this.state.current.slice(
-                  this.state.current.indexOf(":") + 2,
-                  this.state.current.indexOf(this.state.word)
-                )}
-                <div style={{ color: "red" }}>{this.state.word}</div>
-                {this.state.current.slice(
-                  this.state.current.indexOf(this.state.word) +
-                    this.state.word.length
-                )}
+                <div dangerouslySetInnerHTML={{ __html: this.state.word }} />
               </td>
             </tr>
             <tr>
