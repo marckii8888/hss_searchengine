@@ -1,0 +1,48 @@
+{% load static %}
+<head>
+  <link rel='stylesheet' href='{% static 'css/style.css' %}'/>
+</head>
+
+<div class="container_search">
+  <form autocomplete="off" action="{% url 'search' %}">
+    {% csrf_token %}
+    <div class="finder">
+      <div class="finder__outer">
+        <div class="finder__inner">
+          <input class="finder__input" type="text" name="q" />
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="button-container">
+  <form class="wrap" method="GET" action="{% url 'pair' %}">
+    <div class="share-button">
+      <input class="spann" type="submit" value="XX" />
+    </div>
+  </form>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Speaker</th>
+      <th>Left</th>
+      <th>Keyword</th>
+      <th>Right</th>
+    </tr>
+  </thead>
+  {% if query %} {% if results %} {% for item in results %}
+  <tr>
+    <td>{{item.count}}</td>
+    <td>{{item.speaker}}</td>
+    <td>{{item.left}}</td>
+    <td><a style="text-decoration: none; color: red;" href="/chinesevar/{{ item.id }}/">{{item.keyword}}</a></td>
+    <td>{{item.right}}</td>
+  </tr>
+  {% endfor %} {% else %}
+  <p>No results</p>
+  {% endif %} {% endif %}
+</table>
